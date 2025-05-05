@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gambit Palpitacja Serca</title>
+  <style>
+    /* Ustawienia ogólne */
+    body {
+      background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+      font-family: 'Segoe UI', sans-serif;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      overflow-x: hidden;
+      background-size: 400% 400%;
+      animation: gradientAnimation 10s ease infinite;
+    }
+
+    /* Animacja gradientu */
+    @keyframes gradientAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Stylizacja nagłówka */
+    h1 {
+      color: #ff4c4c;
+      font-size: 3rem;
+      margin-top: 2rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      animation: fadeIn 1s ease-out;
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 2rem;
+      z-index: 10; /* aby obrazek był pod nagłówkiem */
+    }
+
+    /* Animacja pojawiania się nagłówka */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Opis gambitu */
+    .description {
+      color: #bbb;
+      font-size: 1.1rem;
+      margin: 2rem auto;
+      max-width: 800px;
+      font-style: italic;
+      animation: slideUp 1s ease-out;
+      opacity: 0;
+      animation-delay: 1s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Stylizacja galerii */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      padding: 2rem;
+      margin-top: 3rem;
+      transition: transform 0.3s ease;
+    }
+
+    /* Styl obrazków w galerii */
+    .gallery img {
+      width: 100%;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      object-fit: cover;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Efekty na obrazkach - powiększenie i zmiana cienia */
+    .gallery img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Subtelna animacja w galerii */
+    .gallery img {
+      animation: fadeInImage 1s ease-out;
+    }
+
+    @keyframes fadeInImage {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Dodatkowe tło w postaci tekstury */
+    .background-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://www.transparenttextures.com/patterns/asfalt.png');
+      opacity: 0.1;
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* Stylizacja obrazka obok nagłówka */
+    .heart-image {
+      width: 200px; /* Zwiększ rozmiar obrazka */
+      height: 200px; /* Zwiększ rozmiar obrazka */
+      background: url('https://file.tanbigo.com/2022/1012/ooYBAGD40FiARNe2AACMg6Nys00220.jpg') no-repeat center center;
+      background-size: cover;
+      border-radius: 50%;
+      display: inline-block;
+      vertical-align: middle;
+      margin-left: 20px; /* Dodanie marginesu do oddzielenia obrazka od tekstu */
+      border: 4px solid #ff4c4c; /* Czerwona obwódka dla efektu */
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Delikatny cień */
+    }
+
+  </style>
+</head>
+<body>
+  <div class="background-overlay"></div>
+
+  <!-- Nagłówek z obrazkiem obok -->
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <h1>Gambit Palpitacja Serca</h1>
+    <div class="heart-image"></div>
+  </div>
+
+  <div class="container">
+    <div class="description">
+      <p>„Palpitacja Serca” to niezwykle agresywny gambit szachowy, w którym białe próbują zdominować centrum planszy, wykorzystując presję na królewskim skrzydle. Taki gambit jest ryzykowny, ale może być zabójczy dla nieprzygotowanego przeciwnika.</p>
+    </div>
+
+    <div class="gallery">
+      <!-- Pozostałe obrazy gambitu -->
+      <img src="8.png" alt="Krok 1">
+      <img src="7.png" alt="Krok 2">
+      <img src="6.png" alt="Krok 3">
+      <img src="5.png" alt="Krok 4">
+      <img src="4.png" alt="Krok 5">
+      <img src="3.png" alt="Krok 6">
+      <img src="2.png" alt="Krok 7">
+      <img src="1.png" alt="Krok 8">
+    </div>
+  </div>
+
+  <script>
+    // Animacja pojawiania się obrazków na przewijaniu
+    window.addEventListener('scroll', function() {
+      const images = document.querySelectorAll('.gallery img');
+      images.forEach((img) => {
+        const imageTop = img.getBoundingClientRect().top;
+        if (imageTop < window.innerHeight) {
+          img.classList.add('visible');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
