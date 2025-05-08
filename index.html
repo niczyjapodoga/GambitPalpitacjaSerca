@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Gambit Palpitacja Serca</title>
   <style>
-    /* Ustawienia ogólne */
     body {
       background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
       font-family: 'Segoe UI', sans-serif;
@@ -18,14 +17,12 @@
       animation: gradientAnimation 10s ease infinite;
     }
 
-    /* Animacja gradientu */
     @keyframes gradientAnimation {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
-    /* Stylizacja nagłówka */
     h1 {
       color: #ff4c4c;
       font-size: 3rem;
@@ -36,16 +33,14 @@
       display: inline-block;
       vertical-align: middle;
       margin-right: 2rem;
-      z-index: 10; /* aby obrazek był pod nagłówkiem */
+      z-index: 10;
     }
 
-    /* Animacja pojawiania się nagłówka */
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Opis gambitu */
     .description {
       color: #bbb;
       font-size: 1.1rem;
@@ -63,7 +58,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Stylizacja galerii */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -73,7 +67,6 @@
       transition: transform 0.3s ease;
     }
 
-    /* Styl obrazków w galerii */
     .gallery img {
       width: 100%;
       border-radius: 10px;
@@ -82,17 +75,12 @@
       object-fit: cover;
       background: rgba(255, 255, 255, 0.1);
       border: 2px solid rgba(255, 255, 255, 0.3);
+      animation: fadeInImage 1s ease-out;
     }
 
-    /* Efekty na obrazkach - powiększenie i zmiana cienia */
     .gallery img:hover {
       transform: scale(1.05);
       box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
-    }
-
-    /* Subtelna animacja w galerii */
-    .gallery img {
-      animation: fadeInImage 1s ease-out;
     }
 
     @keyframes fadeInImage {
@@ -100,7 +88,6 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Dodatkowe tło w postaci tekstury */
     .background-overlay {
       position: absolute;
       top: 0;
@@ -113,26 +100,45 @@
       z-index: -1;
     }
 
-    /* Stylizacja obrazka obok nagłówka */
     .heart-image {
-      width: 200px; /* Zwiększ rozmiar obrazka */
-      height: 200px; /* Zwiększ rozmiar obrazka */
+      width: 200px;
+      height: 200px;
       background: url('https://file.tanbigo.com/2022/1012/ooYBAGD40FiARNe2AACMg6Nys00220.jpg') no-repeat center center;
       background-size: cover;
       border-radius: 50%;
       display: inline-block;
       vertical-align: middle;
-      margin-left: 20px; /* Dodanie marginesu do oddzielenia obrazka od tekstu */
-      border: 4px solid #ff4c4c; /* Czerwona obwódka dla efektu */
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); /* Delikatny cień */
+      margin-left: 20px;
+      border: 4px solid #ff4c4c;
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     }
 
+    /* Styl przycisku muzyki */
+    #musicButton {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: #ff4c4c;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      font-size: 1rem;
+      border-radius: 30px;
+      box-shadow: 0 0 10px rgba(255, 76, 76, 0.4);
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s;
+      z-index: 1000;
+    }
+
+    #musicButton:hover {
+      background-color: #ff1f1f;
+      transform: scale(1.05);
+    }
   </style>
 </head>
 <body>
   <div class="background-overlay"></div>
 
-  <!-- Nagłówek z obrazkiem obok -->
   <div style="display: flex; justify-content: center; align-items: center;">
     <h1>Gambit Palpitacja Serca</h1>
     <div class="heart-image"></div>
@@ -144,7 +150,6 @@
     </div>
 
     <div class="gallery">
-      <!-- Pozostałe obrazy gambitu -->
       <img src="8.png" alt="Krok 1">
       <img src="7.png" alt="Krok 2">
       <img src="6.png" alt="Krok 3">
@@ -156,8 +161,15 @@
     </div>
   </div>
 
+  <!-- Przycisk i audio -->
+  <button id="musicButton">▶️ Odtwórz muzykę</button>
+  <audio id="bgMusic" loop>
+    <source src="audio (2).mp3" type="audio/mpeg">
+    Twoja przeglądarka nie obsługuje odtwarzacza audio.
+  </audio>
+
   <script>
-    // Animacja pojawiania się obrazków na przewijaniu
+    // Efekt przewijania obrazów
     window.addEventListener('scroll', function() {
       const images = document.querySelectorAll('.gallery img');
       images.forEach((img) => {
@@ -166,6 +178,22 @@
           img.classList.add('visible');
         }
       });
+    });
+
+    // Obsługa przycisku muzyki
+    const musicButton = document.getElementById('musicButton');
+    const bgMusic = document.getElementById('bgMusic');
+    let isPlaying = false;
+
+    musicButton.addEventListener('click', function() {
+      if (!isPlaying) {
+        bgMusic.play();
+        musicButton.textContent = '⏸️ Zatrzymaj muzykę';
+      } else {
+        bgMusic.pause();
+        musicButton.textContent = '▶️ Odtwórz muzykę';
+      }
+      isPlaying = !isPlaying;
     });
   </script>
 </body>
