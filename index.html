@@ -58,26 +58,26 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-  .gallery {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 2rem;
-  padding: 2rem;
-  margin-top: 3rem;
-}
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2rem;
+      padding: 2rem;
+      margin-top: 3rem;
+    }
 
-.gallery img {
-  width: 80%;
-  max-width: 600px;
-  border-radius: 10px;
-  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  object-fit: cover;
-  background: rgba(255, 255, 255, 0.1);
-  border: 2px solid rgba(255, 255, 255, 0.3);
-  animation: fadeInImage 1s ease-out;
-}
+    .gallery img {
+      width: 80%;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      object-fit: cover;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      animation: fadeInImage 1s ease-out;
+    }
 
     .gallery img:hover {
       transform: scale(1.05);
@@ -114,7 +114,6 @@
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
     }
 
-    /* Styl przycisku muzyki */
     #musicButton {
       position: fixed;
       bottom: 20px;
@@ -140,16 +139,19 @@
 <body>
   <div class="background-overlay"></div>
 
+  <!-- Nagłówek -->
   <div style="display: flex; justify-content: center; align-items: center;">
     <h1>Gambit Palpitacja Serca</h1>
     <div class="heart-image"></div>
   </div>
 
+  <!-- Opis -->
   <div class="container">
     <div class="description">
       <p>„Palpitacja Serca” to niezwykle agresywny gambit szachowy, w którym białe próbują zdominować centrum planszy, wykorzystując presję na królewskim skrzydle. Taki gambit jest ryzykowny, ale może być zabójczy dla nieprzygotowanego przeciwnika.</p>
     </div>
 
+    <!-- Galeria obrazków -->
     <div class="gallery">
       <img src="8.png" alt="Krok 1">
       <img src="7.png" alt="Krok 2">
@@ -158,20 +160,20 @@
       <img src="4.png" alt="Krok 5">
       <img src="3.png" alt="Krok 6">
       <img src="2.png" alt="Krok 7">
-      <img src="9.png" alt="Krok 8">
+      <img src="9.png" alt="Krok 9">
       <img src="1.png" alt="Krok 8">
     </div>
   </div>
 
-  <!-- Przycisk i audio -->
-  <button id="musicButton">▶️ Odtwórz muzykę</button>
+  <!-- Przycisk i dźwięk -->
+  <button id="musicButton">▶️ Zagraj Muzyke</button>
   <audio id="bgMusic" loop>
     <source src="rodek.mp3" type="audio/mpeg">
     Twoja przeglądarka nie obsługuje odtwarzacza audio.
   </audio>
 
   <script>
-    // Efekt przewijania obrazów
+    // Animacja przy przewijaniu (opcjonalnie)
     window.addEventListener('scroll', function() {
       const images = document.querySelectorAll('.gallery img');
       images.forEach((img) => {
@@ -182,7 +184,7 @@
       });
     });
 
-    // Obsługa przycisku muzyki
+    // Obsługa muzyki
     const musicButton = document.getElementById('musicButton');
     const bgMusic = document.getElementById('bgMusic');
     let isPlaying = false;
@@ -190,10 +192,10 @@
     musicButton.addEventListener('click', function() {
       if (!isPlaying) {
         bgMusic.play();
-        musicButton.textContent = '⏸️ Zatrzymaj muzykę';
+        musicButton.textContent = '⏸️ Zatrzymaj Muzyke';
       } else {
         bgMusic.pause();
-        musicButton.textContent = '▶️ Odtwórz muzykę';
+        musicButton.textContent = '▶️ Zagraj Muzyke';
       }
       isPlaying = !isPlaying;
     });
