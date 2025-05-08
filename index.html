@@ -58,14 +58,15 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      padding: 2rem;
-      margin-top: 3rem;
-      transition: transform 0.3s ease;
-    }
+   .gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem;
+  margin-top: 3rem;
+}
+  
 
     .gallery img {
       width: 100%;
