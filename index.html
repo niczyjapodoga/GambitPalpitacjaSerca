@@ -166,7 +166,7 @@
   </div>
 
   <!-- Przycisk i dźwięk -->
-  <button id="musicButton">▶️ Zagraj Muzyke</button>
+  <button id="musicButton">▶️ Zagraj Muzykę</button>
   <audio id="bgMusic" loop>
     <source src="rodek.mp3" type="audio/mpeg">
     Twoja przeglądarka nie obsługuje odtwarzacza audio.
@@ -192,10 +192,10 @@
     musicButton.addEventListener('click', function() {
       if (!isPlaying) {
         bgMusic.play();
-        musicButton.textContent = '⏸️ Zatrzymaj Muzyke';
+        musicButton.textContent = '⏸️ Zatrzymaj Muzykę';
       } else {
         bgMusic.pause();
-        musicButton.textContent = '▶️ Zagraj Muzyke';
+        musicButton.textContent = '▶️ Zagraj Muzykę';
       }
       isPlaying = !isPlaying;
     });
